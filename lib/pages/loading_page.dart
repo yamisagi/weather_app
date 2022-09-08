@@ -57,26 +57,21 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             Constants.APP_NAME,
             style: Theme.of(context).textTheme.headline4,
           ),
-          const SizedBox(height: 20),
-          SpinKitPulse(
-            color: Colors.blueGrey.shade800,
-            size: 150.0,
-          ),
-          const SizedBox(height: 20),
+          Constants.spacer,
+          Constants.splashComponent,
           Text(
-            'Please wait while we get your location',
+            Constants.loading_text,
             style: Theme.of(context).textTheme.bodyText1,
           ),
         ],
-      )),
+      ),
     );
   }
 }
