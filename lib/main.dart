@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/pages/home_page.dart';
+import 'package:weather_app/pages/loading_page.dart';
 import 'package:weather_app/theme/theme.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ProductTheme.lightTheme,
-      home: const HomePage(),
+      home: const LoadingPage(),
     );
   }
 }

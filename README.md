@@ -61,11 +61,11 @@ In this project, I am trying to create a clone Weather App. And i will use GeoLo
 * [x] Use Dart to perform asynchronous tasks.
 * [x] Async and await usage.
 * [x] Futures Usage.
-* [ ] Usage Dart [http](https://api.dart.dev/stable/2.18.0/dart-html/dart-html-library.html) package.
-* [ ] API Usage.
-* [ ] JSON Usage.
-* [ ] Passing Data from one screen to another with Navigator.
-* [ ] Try-Catch-Finally Usage.
+* [x] Usage Dart [http](https://api.dart.dev/stable/2.18.0/dart-html/dart-html-library.html) package.
+* [x] API Usage.
+* [x] JSON Usage.
+* [x] Passing Data from one screen to another with Navigator.
+* [x] Try-Catch-Finally Usage.
 * [x] [Geolocator](https://pub.dev/packages/geolocator) Package Usage.
 * [ ] Taking Input from User with TextField.
 
