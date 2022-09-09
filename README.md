@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="https://github.com/yamisagi/us/blob/main/lib/constants/ss.png" width="350" height="650">
+<img src="https://github.com/yamisagi/weather_app/blob/main/lib/constants/ss.png" width="350" height="650">
 
 
 In this project, I am trying to create a clone Weather App. And i will use GeoLocation to get users location. And fetch weather data from API service.
