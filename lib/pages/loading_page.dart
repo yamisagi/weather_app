@@ -39,7 +39,7 @@ class _LoadingPageState extends State<LoadingPage> {
     // And to get the weather data from the API
     // Of current location
     NetworkService networkService = NetworkService(
-        "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=${Constants.API_KEY}");
+        "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=${Constants.API_KEY}&units=metric");
     // Then waiting for the that location's weather data
     Response data = await networkService.fetchData();
     // And then we need to send the data to the HomePage
@@ -72,7 +72,6 @@ class _LoadingPageState extends State<LoadingPage> {
           ElevatedButton(
               onPressed: () {
                 getLocation();
-                // getLocation();
               },
               child: const Text(Constants.get_weather_button))
         ],

@@ -75,4 +75,39 @@ class Dialogs {
       ),
     );
   }
+
+  static timeOutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(
+          'We can\'t find you',
+          style: Theme.of(context).textTheme.headline6?.copyWith(
+                fontWeight: FontWeight.w500,
+              ),
+          textAlign: TextAlign.center,
+        ),
+        content: Padding(
+          padding: const EdgeInsets.only(top: 15.0),
+          child: Text(
+            'Don\'t worry, we\'ll try now !',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        actions: [
+          Center(
+            child: TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }
