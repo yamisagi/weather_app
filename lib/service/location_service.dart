@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:async';
-import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/constants/dialog_components.dart';
@@ -27,8 +26,6 @@ class LocationService {
       }
       // If the service is enabled, we need to request permission
       permission = await Geolocator.checkPermission();
-      // LOG PERMISSION STATUS -- GONNA DELETE LATER
-      log(permission.toString());
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.denied) {
@@ -42,7 +39,7 @@ class LocationService {
         // If the permission is granted, we need to get the current location
         Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.low,
-          timeLimit: const Duration(seconds: 5),
+          timeLimit: const Duration(seconds: 10),
         );
         // And store the latitude and longitude
         latitude = position.latitude;
@@ -54,7 +51,6 @@ class LocationService {
         Dialogs.timeOutDialog(context);
         Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.low,
-          timeLimit: const Duration(seconds: 10),
         );
         // And store the latitude and longitude
         latitude = position.latitude;
@@ -63,7 +59,6 @@ class LocationService {
       }
     } catch (e) {
       // If the location is not available, we need to show a dialog
-      log(e.toString());
       return Dialogs.dialogComponent(context);
     }
   }

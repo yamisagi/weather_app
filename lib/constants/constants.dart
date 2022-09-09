@@ -6,8 +6,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class Constants {
   // ------------STRINGS-------------
   static const String APP_NAME = "WhatWeather";
-  static const String get_weather_button = "Get Weather";
+  static const String get_weather_button = "Retry";
   static const String loading_text = 'Please wait while we get your location';
+  static const String SEARCH_APP_BAR = "Search City ";
+  static const String search = "Search";
   // ------------API-------------
   static const String API_KEY = "a696bd529272a6241accc0c8b90207eb";
   // ------------OTHERS-------------
@@ -17,6 +19,13 @@ class Constants {
   static final splashComponent = SpinKitPulse(
     color: Colors.blueGrey.shade800,
     size: 150.0,
+  );
+  static final boxDecoration = BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: Constants.gradientList,
+    ),
   );
   static final BorderRadius borderRadius = BorderRadius.circular(10);
   // -----------COLORS-------------

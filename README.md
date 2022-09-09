@@ -51,6 +51,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+<img src="https://github.com/yamisagi/us/blob/main/lib/constants/ss.png" width="350" height="650">
+
 
 In this project, I am trying to create a clone Weather App. And i will use GeoLocation to get users location. And fetch weather data from API service.
 
@@ -67,7 +69,8 @@ In this project, I am trying to create a clone Weather App. And i will use GeoLo
 * [x] Passing Data from one screen to another with Navigator.
 * [x] Try-Catch-Finally Usage.
 * [x] [Geolocator](https://pub.dev/packages/geolocator) Package Usage.
-* [ ] Taking Input from User with TextField.
+* [x] Taking Input from User with TextField.
+* [x] Finish the Project.
 
 
 
@@ -120,4 +123,4 @@ Eren C. - [@_yamisagi](https://twitter.com/_yamisagi)
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: assets/product.gif
+[product-screenshot]: lib/constants/ss.png

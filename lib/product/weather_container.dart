@@ -2,18 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/constants/constants.dart';
 
 class WeatherContainer extends StatelessWidget {
+  final String? cityName;
+  final String? weatherDescription;
+  final int? temp;
+  final String weatherIcon;
+  final double mintemp;
+  final double maxtemp;
+  final int humidity;
+  final int pressure;
+
   const WeatherContainer({
     Key? key,
     required this.cityName,
     required this.weatherDescription,
     required this.temp,
-    this.weatherIcon,
+    required this.weatherIcon,
+    required this.mintemp,
+    required this.maxtemp,
+    required this.humidity,
+    required this.pressure,
   }) : super(key: key);
-
-  final String? cityName;
-  final String? weatherDescription;
-  final double? temp;
-  final String? weatherIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +42,7 @@ class WeatherContainer extends StatelessWidget {
           radius: 2.0,
         ),
       ),
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.4,
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
@@ -81,14 +89,35 @@ class WeatherContainer extends StatelessWidget {
                     ?.copyWith(color: Colors.orange.shade700),
               ),
               Image.network(
-                weatherIcon == null
-                    ? '😶‍🌫️'
-                    : 'http://openweathermap.org/img/wn/$weatherIcon@2x.png',
+                'http://openweathermap.org/img/wn/$weatherIcon@2x.png',
                 filterQuality: FilterQuality.high,
                 scale: 1,
               ),
             ],
-          )
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                  'Min: ${mintemp.toStringAsFixed(1)} Max: ${maxtemp.toStringAsFixed(1)}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5
+                      ?.copyWith(color: Colors.white)),
+            ],
+          ),
+          Constants.spacer,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Humidity: $humidity% Pressure: $pressure hPa',
+                style: Theme.of(context).textTheme.headline6?.copyWith(
+                      color: Colors.white,
+                    ),
+              ),
+            ],
+          ),
         ],
       ),
     );
