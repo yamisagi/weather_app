@@ -1,5 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:weather_app/constants/constants.dart';
+import 'package:weather_app/product/weather_container.dart';
+import 'package:weather_app/product/weather_message.dart';
+import 'package:weather_app/service/weather_model.dart';
 
 class HomePage extends StatefulWidget {
   final dynamic data;
@@ -13,7 +18,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  double? temp;
+  @override
+  void initState() {
+    super.initState();
+    updateUI(widget.data);
+  }
+
+  WeatherModel weatherModel = WeatherModel();
+  double temp = 0;
   String? cityName;
   String? weatherIcon;
   String? weatherMessage;
@@ -24,24 +36,23 @@ class _HomePageState extends State<HomePage> {
   String? weatherPressure;
   String? weatherWindSpeed;
   String? weatherFeelsLike;
-  void updateUI() {
-    temp = widget.data['main']['temp'];
-    cityName = widget.data['name'];
-    weatherIcon = widget.data['weather'][0]['icon'];
-    weatherMessage = widget.data['weather'][0]['main'];
-    weatherDescription = widget.data['weather'][0]['description'];
-    weatherTempMax = widget.data['main']['temp_max'].toString();
-    weatherTempMin = widget.data['main']['temp_min'].toString();
-    weatherHumidity = widget.data['main']['humidity'].toString();
-    weatherPressure = widget.data['main']['pressure'].toString();
-    weatherWindSpeed = widget.data['wind']['speed'].toString();
-    weatherFeelsLike = widget.data['main']['feels_like'].toString();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    updateUI();
+  String? message;
+  void updateUI(dynamic data) {
+    setState(() {
+      temp = widget.data['main']['temp'];
+      cityName = widget.data['name'];
+      weatherIcon = widget.data['weather'][0]['icon'];
+      weatherMessage = widget.data['weather'][0]['main'];
+      weatherDescription = widget.data['weather'][0]['description'];
+      weatherTempMax = widget.data['main']['temp_max'].toString();
+      weatherTempMin = widget.data['main']['temp_min'].toString();
+      weatherHumidity = widget.data['main']['humidity'].toString();
+      weatherPressure = widget.data['main']['pressure'].toString();
+      weatherWindSpeed = widget.data['wind']['speed'].toString();
+      weatherFeelsLike = widget.data['main']['feels_like'].toString();
+      message = weatherModel.getMessage(temp.toInt());
+      log(message ?? 'message is null');
+    });
   }
 
   @override
@@ -49,13 +60,29 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(Constants.APP_NAME),
+        elevation: 0,
+        backgroundColor: Colors.blue.shade100,
       ),
-      body: Center(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: Constants.gradientList,
+          ),
+        ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('This is the Home Page'),
-            Text('You are in ${widget.data['name']}'),
+            WeatherContainer(
+              cityName: cityName,
+              weatherDescription: weatherDescription,
+              temp: temp,
+              weatherIcon: weatherIcon,
+            ),
+            WeatherMessage(
+              weatherMessage: message?? 'You are in',
+              cityName: cityName?? 'Unknown Location',
+            ),
           ],
         ),
       ),
