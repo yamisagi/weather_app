@@ -3,7 +3,7 @@ import 'package:weather_app/pages/loading_page.dart';
 import 'package:weather_app/theme/theme.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 

@@ -6,10 +6,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:weather_app/constants/constants.dart';
-import 'package:weather_app/constants/service_components.dart';
 import 'package:weather_app/pages/home_page.dart';
+import 'package:weather_app/service/location_service.dart';
 import 'package:weather_app/service/network_service.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({super.key});
@@ -70,6 +69,12 @@ class _LoadingPageState extends State<LoadingPage> {
             Constants.loading_text,
             style: Theme.of(context).textTheme.bodyText1,
           ),
+          ElevatedButton(
+              onPressed: () {
+                getLocation();
+                // getLocation();
+              },
+              child: const Text(Constants.get_weather_button))
         ],
       ),
     );
